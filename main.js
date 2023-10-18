@@ -8,7 +8,6 @@ let modalBodyCarrito = document.getElementById("modal-bodyCarro")
 let botonCarrito = document.getElementById("botonCarrito")
 let precioTotal = document.getElementById("precioTotal")
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
-// Declarar productosCarrito
 let productosCarrito = [];
 
 
@@ -74,7 +73,7 @@ function agregarAlCarro(elemento){
                 },
               }).showToast()
 }
-
+//CARGAR PRODUCTOS
 function cargarProductosCarro(array){
     modalBodyCarrito.innerHTML = ""
     array.forEach(
@@ -97,23 +96,27 @@ function cargarProductosCarro(array){
         (productoCarrito) => {
             document.getElementById(`botonEliminar${productoCarrito.id}`).
             addEventListener("click", () =>{
-            //BORRAR DEL DOM 
+
                 let cardproducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
                 cardproducto.remove()
-            //BORRAR DEL ARRAY
+           
                 let posicion = array.indexOf(productoCarrito)
                 
                 array.splice(posicion, 1)
                 
-            //BORRAR EL STORAGGE
+           
             localStorage.setItem("carrito", JSON.stringify(array))
-            //ACTUALIZAR EL TOTAL
+           
             calcularTotal(array)
             })
         }
     )
     calcularTotal(array)    
 }
+
+
+//CALCULAR EL TOTAL
+
 function calcularTotal(array){
     
     
@@ -130,19 +133,19 @@ function calcularTotal(array){
 
 //FINALIZAR COMPRA 
 function finalizarCompra(array){
-    //alguna alerta nos diga que finalizo (con el .then agregamos confirmar compra)
+    
     let total = calcularTotal(array)
     Swal.fire({
         text: `Gracias por su compra, usted ha gastado ${total}`
     })
-    //limpiar el carrito (desp mejoramos forma)
+    
     productosCarro = []
-    //actualizar storage
+    
     localStorage.removeItem("carrito")
   
 }
 
-
+//ORDENAR DE MAYOR A MENOR 
 function ordenarMayorMenor(array){
     
     let arrayMayorMenor = array.concat()
@@ -152,6 +155,8 @@ function ordenarMayorMenor(array){
     )
     mostrarCatalogoDOM(arrayMayorMenor)
 }
+
+//ORDENAR DE MENOR A MAYOR 
 function ordenarMenorMayor(ar){
     let arrMenor = ar.concat()
     arrMenor.sort(
@@ -160,6 +165,8 @@ function ordenarMenorMayor(ar){
     )
     mostrarCatalogoDOM(arrMenor)
 }
+
+//ORDENAR ALFABETICAMENTE
 function ordenarAlfabeticamenteTitulo(array){
     let ordenadoAlf = array.concat()
     ordenadoAlf.sort(
@@ -176,6 +183,9 @@ function ordenarAlfabeticamenteTitulo(array){
     )
     mostrarCatalogoDOM(ordenadoAlf)
 }
+
+
+//BUSCAR
 function buscarInfo(buscado,array){
     
     let coincidencias = array.filter(
