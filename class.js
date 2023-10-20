@@ -7,6 +7,7 @@ class sahumerio{
        this.titulo = titulo,
        this.precio = precio,
        this.imagen = imagen
+       this.cantidad = 1
     }
     mostrarInfosahumerio(){
         console.log(`El sahumerio es ${this.marca} su fragancia es ${this.titulo} y su precio es ${this.precio}`)
@@ -14,6 +15,14 @@ class sahumerio{
     
     exponerEnCatalogo(){
         console.log(this.id, this.titulo, this.marca, this.precio)
+    }
+    sumarUnidad(){
+        this.cantidad++
+        return this.cantidad
+    }
+    restarUnidad(){
+        this.cantidad = this.cantidad - 1
+        return this.cantidad
     }
 }
  //OBJETOS
@@ -47,4 +56,4 @@ class sahumerio{
 }
 
 let productosCarro = JSON.parse(localStorage.getItem("carro")) ?? []
-console.log(productosCarro)
+
