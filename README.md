@@ -1,2 +1,0 @@
-# javascrip
-JS

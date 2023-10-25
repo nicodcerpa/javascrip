@@ -1,0 +1,46 @@
+[
+
+
+    {
+        "id": 1, 
+        "marca": "Copal Natural",
+        "titulo": "Copal",
+        "precio": 800,
+        "imagen": "copalNatural.jpg"
+    },
+    {
+        "id": 2, 
+        "marca": "Patagonia Natural",
+        "titulo": "Hisbiscus",
+        "precio": 1200,
+        "imagen": "Hibiscus.jpg"
+    },
+    {
+        "id": 3, 
+        "marca": "Incienso Natural",
+        "titulo": "Incienso",
+        "precio": 650,
+        "imagen": "inciensoNatural.jpg"
+    },
+    {
+        "id": 4, 
+        "marca": "Orquidias y Laurel",
+        "titulo": "Yagra",
+        "precio": 1100,
+        "imagen": "orquideas-laurel.jpg"
+    },
+    {
+        "id": 5, 
+        "marca": "Rosa y Vainilla",
+        "titulo": "Amor",
+        "precio": 1000,
+        "imagen": "rosa-vainilla.jpg"
+    },
+    {
+        "id": 6, 
+        "marca": "Patagonia Natural",
+        "titulo": "Rosa mosqueta",
+        "precio": 1250,
+        "imagen": "RosaMosqueta.jpg"
+    }
+]

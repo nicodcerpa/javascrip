@@ -1,4 +1,4 @@
-class sahumerio{
+class Sahumerio{
     constructor(id, marca, titulo, precio, imagen){
        
 //PROPIEDADES
@@ -25,34 +25,33 @@ class sahumerio{
         return this.cantidad
     }
 }
- //OBJETOS
- const sahumerio1 = new sahumerio(1, "Copal Natural", "copal", 800, "copalNatural.jpg")
+ //CARGAR DESDE EL .JSON
+function cargarSahumerio (array) {
 
- const sahumerio2 = new sahumerio(2, "Patagonia Natural", "Hisbiscus", 1200, "Hibiscus.jpg")
-
- const sahumerio3 = new sahumerio(3, "Incienso Natural", "Incienso", 650, "inciensoNatural.jpg")
-
- const sahumerio4 = new sahumerio(4, "Orquidias y Laurel", "Yagra", 1100, "orquideas-laurel.jpg")
-
- const sahumerio5 = new sahumerio(5, "Rosa y Vainilla", "Amor", 1000, "rosa-vainilla.jpg")
-
- const sahumerio6 = new sahumerio(6, "Patagonia Natural", "Rosa mosqueta", 1250, "RosaMosqueta.jpg")
-
-
+ fetch("sahumerios.json")
+.then((resp)=>resp.json())
+.then((dataSahumerio) => {
+   for(let sahu of dataSahumerio){
+    let sahumerioNuevo = new Sahumerio (sahu.id, sahu.marca, sahu.titulo, sahu.precio, sahu.imagen)
+    array.push(sahumerioNuevo)
+   }
+   localStorage.setItem("estanterias", JSON.stringify(array))
+})
+}
  let estanterias = []
  if(localStorage.getItem("estanterias")){
      
     
      for(let sahumerios of JSON.parse(localStorage.getItem("estanterias"))){
-         let sahumerioStorage = new sahumerio (sahumerios.id, sahumerios.marca, sahumerios.titulo, sahumerios.precio, sahumerios.imagen)
+         let sahumerioStorage = new Sahumerio (sahumerios.id, sahumerios.marca, sahumerios.titulo, sahumerios.precio, sahumerios.imagen)
         estanterias.push(sahumerioStorage)
     }
 
 }else{
     
     console.log("seteamos por primera vez")
-    estanterias.push(sahumerio1,sahumerio2,sahumerio3,sahumerio4,sahumerio5,sahumerio6)
-    localStorage.setItem("estanterias", JSON.stringify(estanterias))
+    cargarSahumerio(estanterias)
+    console.log(estanterias)
 }
 
 let productosCarro = JSON.parse(localStorage.getItem("carro")) ?? []
